@@ -1,0 +1,40 @@
+
+.header{
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    background-image: linear-gradient(to top left, #34e893, #31a0c4);
+    .header-search{
+        display: flex;
+        align-items: center;
+        input{
+            font-family: 'Anek Telugu', sans-serif;
+            font-weight: 600;
+            margin-right: 20px;
+            height: 40px;
+            width: 250px;
+            border-radius: 99999px;
+            padding: 6px 18px 0;
+            border: none;
+            font-size: 18px;
+            line-height: 40px;
+            outline: none;
+            caret-color: red;
+            color: #135f00;
+        }
+        i{
+            font-size: 22px;
+            color: #30297c;
+        }
+    }
+    .header-logo{
+       
+        // background-color: red;
+        img{
+            object-fit: contain;
+            width: 400px;
+            height: 200px;
+            
+        }
+    }
+}
