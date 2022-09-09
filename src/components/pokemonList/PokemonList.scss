@@ -1,5 +1,10 @@
 .pokemon-list-container{
     background-color: rgb(48, 48, 48);
+    background-image: url("https://fisoloji.com/wp-content/uploads/2020/08/pokemon-wallpaper-23.jpg");
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: center;
+    background-blend-mode: soft-light;
 }
 .pokemon-list{
     display: flex;

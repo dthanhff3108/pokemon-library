@@ -24,3 +24,18 @@
         }
     }
 }
+.back-btn{
+    position: fixed;
+    top: 5%;
+    right: 5%;
+    cursor: pointer;
+    padding: 10px;
+    &:hover i{
+        transform: scale(1.1);
+    }
+    i{
+        transition: all 0.3s linear;
+        color: beige;
+        text-shadow: 0 0 3px #000, 2px 2px 7px #9be1ff, -2px -2px 7px #9be1ff;
+    }
+}

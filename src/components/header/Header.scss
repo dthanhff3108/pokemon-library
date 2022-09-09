@@ -3,24 +3,38 @@
     display: flex;
     align-items: center;
     justify-content: space-evenly;
-    background-image: linear-gradient(to top left, #34e893, #31a0c4);
+    box-shadow: 1px 4px 26px lavender;
     .header-search{
         display: flex;
         align-items: center;
+        position: relative;
+        label{
+            position: absolute;
+            top: 50%;
+            left: 2%;
+            transform: translateY(-50%);
+            transition: all 0.2s linear;
+            color: rgb(79, 79, 79);
+            font-weight: 600;
+            background-color: white;
+            padding: 0 4px;
+        }
         input{
             font-family: 'Anek Telugu', sans-serif;
             font-weight: 600;
             margin-right: 20px;
             height: 40px;
             width: 250px;
-            border-radius: 99999px;
-            padding: 6px 18px 0;
-            border: none;
-            font-size: 18px;
-            line-height: 40px;
-            outline: none;
+            font-size: 15px;
             caret-color: red;
+            padding: 0 8px;
             color: #135f00;
+            &:focus ~ label{
+                transform: translateY(-160%);
+                font-size: 12px;
+
+
+            }
         }
         i{
             font-size: 22px;

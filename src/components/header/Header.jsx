@@ -4,7 +4,8 @@ function Header() {
     return ( 
         <div className='header'>
             <div className="header-search">
-                <input type="text" />
+                <input id="search" type="text" />
+                <label htmlFor="search">Find a Pokemon</label>
                 <i className="fa-solid fa-magnifying-glass"></i>
             </div>
             <div className="header-logo">

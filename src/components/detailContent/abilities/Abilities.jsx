@@ -1,6 +1,6 @@
 import { useLocation } from 'react-router-dom'
 import classNames from 'classnames/bind';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
 
 import styles from './Abilities.module.scss'
@@ -11,7 +11,7 @@ let cx = classNames.bind(styles);
 function Abilities() {
     const location = useLocation() 
     const {info} = location.state
-    const { abilities, stats,sprites, forms} = info.info
+    const { abilities, stats,held_items, sprites} = info.info
     const [ability,setAbility] = useState([])
     const [abilityDetails, setAbilityDetails] = useState("")
 
@@ -34,8 +34,11 @@ function Abilities() {
     useEffect(()=>{
         fetchDetailAbility()
     },[])
+
+    console.log();
     return ( 
-        <div  className={cx("wrapper")}>
+        <div  className={cx("wrapper")}
+        >
             <div className={cx("abilities")}>
                 {
                     !abilityDetails && 
@@ -69,6 +72,21 @@ function Abilities() {
                         <StatsColumn key={index} stats={stat}/>
                     ))
                 }
+            </div>
+            <div className={cx("held-item")}>
+                {
+                    held_items.map((item,index)=>(
+                        <p key={index}>{item.item.name}</p>
+                    ))
+                }
+            </div>
+            <div className={cx("sprites")}>
+                <div className={cx("sprites-item")}>
+                    <img src={sprites.versions["generation-v"]["black-white"].animated.back_default} alt="" />
+                </div>
+                <div className={cx("sprites-item")}>   
+                    <img src={sprites.versions["generation-v"]["black-white"].animated.front_default} alt="" />
+                </div>
             </div>
         </div>
      );

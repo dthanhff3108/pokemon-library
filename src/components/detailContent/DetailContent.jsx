@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import ReactPageScroller from 'react-page-scroller';
 import classNames from 'classnames/bind';
+import { useNavigate } from 'react-router-dom'
 
 import styles from './DetailContent.module.scss'
 import InfoBasic from './infoBasic/InfoBasic';
@@ -8,6 +9,7 @@ import Abilities from './abilities/Abilities';
 
 let cx = classNames.bind(styles)
 function DetailContent() {
+    const navigate = useNavigate()
     const [page,setPage] = useState(0)
     const pageLength = 2
     const list = ()=>{
@@ -22,6 +24,7 @@ function DetailContent() {
         }
         return arrayNav
     }
+
     return ( 
         <div className={cx('wrapper')}>
             <ReactPageScroller
@@ -36,6 +39,11 @@ function DetailContent() {
             <ul className={cx('nav-page')}>
                 {list()}
             </ul>
+            <span className={cx("back-btn")}
+                onClick={()=>navigate(-1)}
+            >
+                <i className="fa-solid fa-rotate-left"></i>
+            </span>
         </div>
     );
 }

@@ -2,6 +2,12 @@ const checkTypePokemon = (arrTypes)=>{
     if(arrTypes){
         const typeList = arrTypes.map(type => {
             switch (type.type.name){
+                case "dragon":
+                    return {
+                        name: "dragon",
+                        color : 'rgb(250, 162, 0)',
+                        icon : <i className="fa-solid fa-dragon dragon"></i>
+                    }
                 case "electric":
                     return {
                         name: "electric",

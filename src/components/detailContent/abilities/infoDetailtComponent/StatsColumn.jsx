@@ -8,7 +8,6 @@ function StatsColumn({stats}) {
     const renderStat = (value)=>{
         let arrStatLine = []
         let numberOfLine = Math.ceil(15 * value / 100)
-        console.log(numberOfLine);
         for(let i = 0;i<15;i++){
             i<numberOfLine ? 
                 arrStatLine.push(<li key={i} style={effort?{backgroundColor: "#f1561e"}:{}} className={cx("line","active")}></li>)
