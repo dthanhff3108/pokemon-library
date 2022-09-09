@@ -1,46 +1,41 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState } from 'react';
+import ReactPageScroller from 'react-page-scroller';
+import classNames from 'classnames/bind';
 
-import './DetailContent.scss'
+import styles from './DetailContent.module.scss'
 import InfoBasic from './infoBasic/InfoBasic';
 import Abilities from './abilities/Abilities';
+
+let cx = classNames.bind(styles)
 function DetailContent() {
-    const detailRef = useRef(null)
     const [page,setPage] = useState(0)
     const pageLength = 2
-    const handleScroll = (e)=>{
-        console.log("run");
-        if(e.deltaY>0){
-            console.log("down");
-            console.log(page);
-            if(page < pageLength){
-                setPage(page=>page+1)
-                window.scrollTo({
-                    top : window.innerHeight*(page+1),
-                    behavior: "smooth"
-                })
+    const list = ()=>{
+        let arrayNav =[]
+        for (let i= 0;i<pageLength;i++){
+            if(i===page){
+                arrayNav.push(<li key={i} className={cx('active')}></li>)
+            }
+            else{
+                arrayNav.push(<li key={i}></li>)
             }
         }
-        else if(e.deltaY<0){
-            console.log("up");
-            if(page> 0){
-                setPage(page=>page-1)
-                window.scrollTo({
-                    top :window.innerHeight*(page+1),
-                    behavior: "smooth"
-                })
-            }
-        }
+        return arrayNav
     }
-    console.log(page);
-    useEffect(()=>{
-        detailRef.current.addEventListener("mousewheel",handleScroll)
-        // return () => detailRef.current.removeEventListener("mousewhell",handleScroll)
-    },[page])
     return ( 
-        <div ref={detailRef}>
-            <InfoBasic/>
-            <Abilities/>
-            <Abilities/>
+        <div className={cx('wrapper')}>
+            <ReactPageScroller
+                animationTimer={500}
+                pageOnChange={(e)=>{
+                    setPage(e)
+                }}
+            >
+                <InfoBasic/>
+                <Abilities/>
+            </ReactPageScroller>
+            <ul className={cx('nav-page')}>
+                {list()}
+            </ul>
         </div>
     );
 }

@@ -13,3 +13,10 @@ a{
   text-decoration: none;
   color: inherit;
 }
+ul{
+  list-style: none;
+}
+li, ul{
+  padding: 0;
+  margin: 0;
+}

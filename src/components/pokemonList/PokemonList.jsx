@@ -12,7 +12,6 @@ function PokemonList() {
     const pokemonListRedux = useSelector((state)=>state.pokemonList.pokemonList)
 
     const getPokemonList = async (url)=>{
-        console.log(url);
         return await axios.get(url)
             .then(res=>{
                 dispatch(updateUrl(res.data.next))

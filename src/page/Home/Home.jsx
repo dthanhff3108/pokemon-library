@@ -3,8 +3,7 @@ import Header from '../../components/header/Header'
 import PokemonList from '../../components/pokemonList/PokemonList';
 
 
-function Home({firstUrl}) {
-    console.log("render");
+function Home() {
     return ( 
         <div>
             <Header/>

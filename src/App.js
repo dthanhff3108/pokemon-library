@@ -9,6 +9,7 @@ import PokemonDetail from './page/DetailPokemon/PokemonDetail'
 import { useSelector, useDispatch } from 'react-redux'
 
 import { updateList, pushItem} from './redux/slice/pokemonListSlice'
+
 function App() {
   const dispatch = useDispatch()
   const pokemonListRedux = useSelector((state)=>state.pokemonList.pokemonList)
@@ -34,6 +35,7 @@ function App() {
       }
       getPokemonList(`https://pokeapi.co/api/v2/pokemon?limit=20&offset=0`)
   },[])
+
   return (
     <div className="App">
         <Routes>

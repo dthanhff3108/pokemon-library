@@ -16,17 +16,7 @@
     &:hover .pokemon-img{
         transform: scale(1.1);
     }
-    &:after{
-        content:"";
-        position: absolute;
-        display: block;
-        width: 150px;
-        height: 1px;
-        background-color: #b3d7e7;
-        filter: blur(1px);
-        bottom: 25%;
-        border-radius: 2px;
-    }
+   
     
     i{
         border: 1px dashed white;
