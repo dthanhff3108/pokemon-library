@@ -24,14 +24,19 @@
         }
     }
 }
-.back-btn{
+.handle-btn{
     position: fixed;
     top: 5%;
     right: 5%;
     cursor: pointer;
     padding: 10px;
+    display: flex;
+    flex-direction: column;
     &:hover i{
         transform: scale(1.1);
+    }
+    span{
+        margin: 10px 0;
     }
     i{
         transition: all 0.3s linear;

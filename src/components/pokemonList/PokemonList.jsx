@@ -1,4 +1,4 @@
-import { useState} from 'react'
+import { useRef } from 'react'
 import axios from 'axios';
 
 import { useSelector, useDispatch } from 'react-redux'
@@ -7,6 +7,7 @@ import { updateList, pushItem, updateUrl} from '../../redux/slice/pokemonListSli
 import PokemonItem from '../pokemonItem/PokemonItem';
 import './PokemonList.scss'
 function PokemonList() {
+    const pokemonListRef = useRef()
     const dispatch = useDispatch()
     const nextUrl = useSelector(state=>state.pokemonList.nextUrl)
     const pokemonListRedux = useSelector((state)=>state.pokemonList.pokemonList)
@@ -21,7 +22,6 @@ function PokemonList() {
                 await axios.get(`https://pokeapi.co/api/v2/pokemon/${item.name}`)
                 .then(res=> {
                     let newItem = {
-                        name : item.name,
                         info : res.data
                     };
                     dispatch(pushItem(newItem))
@@ -33,8 +33,11 @@ function PokemonList() {
     const handleLoadMore = ()=>{
         getPokemonList(nextUrl)
     }
+    
     return ( 
-        <div className="pokemon-list-container">
+        <div className="pokemon-list-container"
+            ref={pokemonListRef}
+        >
             <div className="pokemon-list">
                 {
                     pokemonListRedux.map((pokemonItem,index)=>(
@@ -46,6 +49,7 @@ function PokemonList() {
             >
                 <p>Load more</p>
             </button>
+            
         </div>
      );
 }

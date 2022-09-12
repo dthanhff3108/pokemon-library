@@ -16,7 +16,7 @@ export const pokemonListSlice = createSlice({
         state.pokemonList.push(action.payload)
     },
     updateUrl : (state, action) => {
-      state.nextUrl = (action.payload)
+      state.nextUrl = action.payload
   },
   },
 })

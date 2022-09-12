@@ -35,7 +35,6 @@ function Abilities() {
         fetchDetailAbility()
     },[])
 
-    console.log();
     return ( 
         <div  className={cx("wrapper")}
         >

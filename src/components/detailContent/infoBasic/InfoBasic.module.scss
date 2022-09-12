@@ -13,6 +13,7 @@
   transform: translateY(-90%);
   display: flex;
   align-items: center;
+  user-select: none;
     p{
         font-size: 40px;
         font-weight: 600;
@@ -241,9 +242,61 @@
     }
 }
 
+.header-search{
+  position: absolute;
+  top: 5%;
+  left: 5%;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  input{
+      font-family: 'Anek Telugu', sans-serif;
+      font-weight: 600;
+      margin-right: 20px;
+      height: 40px;
+      width: 250px;
+      font-size: 15px;
+      caret-color: red;
+      padding: 0 8px;
+      color: #fdfdfd;
+      outline: none;
+      border: 1px solid rgb(250, 250, 250);
+      border-radius: 3px;
+      background-color: transparent;
+      
+  }
+  .suggest-list{
+    position: absolute;
+    top: 110%;
+    width: 50%;
+    .suggest-item{
+      text-align: left;
+      padding: 4px 10px;
+      color: white;
+      border: 1px solid white;
+      margin: 2px 0;
+    }
+  }
+  i{
+      font-size: 22px;
+      color: white;
+  }
+  .loading{
+    animation: spinner 4s linear infinite;
+  }
+  
+}
+
 
 // keyframe
-
+@keyframes spinner {
+  0%{
+    transform: rotate(0);
+  }
+  100%{
+    transform: rotate(360deg);
+  }
+}
 
 @keyframes showingInfo-cross {
   0%{

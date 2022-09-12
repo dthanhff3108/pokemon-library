@@ -39,11 +39,19 @@ function DetailContent() {
             <ul className={cx('nav-page')}>
                 {list()}
             </ul>
-            <span className={cx("back-btn")}
-                onClick={()=>navigate(-1)}
-            >
-                <i className="fa-solid fa-rotate-left"></i>
-            </span>
+            <div className={cx("handle-btn")}>
+                <span className={cx("back-btn")}
+                    onClick={()=>navigate(-1)}
+                >
+                    <i className="fa-solid fa-rotate-left"></i>
+                </span>
+                <span className={cx("back-btn")}
+                    onClick={()=>navigate("/")}
+                >
+                    <i className="fa-solid fa-house"></i>
+                </span>
+            </div>
+            
         </div>
     );
 }
