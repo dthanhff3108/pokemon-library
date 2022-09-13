@@ -1,7 +1,6 @@
 
-In the project directory, you can run:
 
-### `npm start`
 
 State Management : Redux
-FE : REactJS
+FE : ReactJS
+Features : See all Pokemon, See Info Pokemon by Name, Find Evolution of Pokemon by ID
