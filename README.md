@@ -1,8 +1,10 @@
 
 
 
-# State Management : Redux
+## State Management : Redux
 
-# FE : ReactJS
+## FE : ReactJS
 
-# Features : See all Pokemon, See Info Pokemon by Name, Find Evolution of Pokemon by ID
+## Features : See all Pokemon, See Info Pokemon by Name, Find Evolution of Pokemon by ID
+
+## api : https://pokeapi.co/
