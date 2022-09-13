@@ -54,7 +54,6 @@ function App() {
           <Route path ="/expoler" element = {<Expoler/>}></Route>
           <Route path ="/pokemon/:name" element = {<PokemonDetail/>}></Route>
           <Route path ="*"  element = {<Notfound/>}></Route>
-          
         </Routes>
     </div>
   );

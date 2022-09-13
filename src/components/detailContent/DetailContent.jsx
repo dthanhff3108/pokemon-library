@@ -2,7 +2,6 @@ import { useState } from 'react';
 import ReactPageScroller from 'react-page-scroller';
 import classNames from 'classnames/bind';
 import { useNavigate } from 'react-router-dom'
-
 import styles from './DetailContent.module.scss'
 import InfoBasic from './infoBasic/InfoBasic';
 import Abilities from './abilities/Abilities';
@@ -51,7 +50,6 @@ function DetailContent() {
                     <i className="fa-solid fa-house"></i>
                 </span>
             </div>
-            
         </div>
     );
 }

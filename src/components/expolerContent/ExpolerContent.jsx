@@ -1,20 +1,37 @@
 import classNames from "classnames/bind";
-import { useState  } from "react";
-import { useNavigate } from "react-router-dom";
+import { useState, useEffect  } from "react";
+import { useNavigate, Outlet} from "react-router-dom";
 import axios from "axios";
+import ReactPageScroller from 'react-page-scroller';
+
 
 import styles from './ExpolerContent.module.scss'
+import ExpolerColumn from './ExpolerColumn'
+import ExpolerDetail from "./ExpolerDetail";
 let cx = classNames.bind(styles)
 
 function ExpolerContent() {
     const navigate = useNavigate()
-    const [item,setItem]= useState([])
+    const [egg,setEgg]= useState([])
+    const [natures,setNatures]= useState([])
+    const [habitat,setHabitat]= useState([])
     const [loading,setLoading] = useState(false)
-    const [searchValue, setSearchValue] = useState("")
+
     const getDataPokemon = async ()=>{
         setLoading(true)
-        setLoading(false)
+        const getEgg = await axios.get("https://pokeapi.co/api/v2/egg-group")
+        const dataEgg  =getEgg.data.results
+        setEgg(dataEgg)
+        const getNatures = await axios.get("https://pokeapi.co/api/v2/nature")
+        const dataNatures = getNatures.data.results
+        setNatures(dataNatures)
+        const getHabitat = await axios.get("https://pokeapi.co/api/v2/pokemon-habitat")
+        const databitat = getHabitat.data.results
+        setHabitat(databitat)
     }
+    useEffect(()=>{
+        getDataPokemon()
+    },[])
     return ( 
         <div className={cx('wrapper')}>
             <div className={cx("back-btn")}
@@ -22,22 +39,18 @@ function ExpolerContent() {
             >
                 <i className="fa-solid fa-backward"></i>
             </div>
-            <div className={cx("handle-search")}>
-                <input type="text" 
-                    value={searchValue}
-                    placeholder="Enter pokemon name"
-                    onChange={e=>setSearchValue(e.target.value)}
-                />
-                { !loading ? 
-                    <div onClick={getDataPokemon}>
-                        <i className="fa-solid fa-magnifying-glass"></i>
-                    </div>
-                    :<i className={cx("fa-solid fa-spinner","loading")}></i>}
-            </div>
-            <div className={cx("expoler-list")}>
-                
-            </div>         
+            <ReactPageScroller
+                animationTimer={500}
+            >
+                <div className={cx("expoler-list")}>
+                    <ExpolerColumn name="egg" data={egg}/>
+                    <ExpolerColumn name="natures" data={natures}/>
+                    <ExpolerColumn name="habitat" data={habitat}/>
+                </div>         
+                <ExpolerDetail/>            
+            </ReactPageScroller>
         </div>
+
      );
 }
 

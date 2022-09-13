@@ -1,6 +1,5 @@
 import { useRef } from 'react'
 import axios from 'axios';
-
 import { useSelector, useDispatch } from 'react-redux'
 
 import { updateList, pushItem, updateUrl} from '../../redux/slice/pokemonListSlice'
@@ -49,7 +48,6 @@ function PokemonList() {
             >
                 <p>Load more</p>
             </button>
-            
         </div>
      );
 }
