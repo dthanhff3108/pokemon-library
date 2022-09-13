@@ -12,7 +12,13 @@ function EvolutionItem() {
     const [item,setItem]= useState([])
     const [loading,setLoading] = useState(false)
     const [searchValue, setSearchValue] = useState("")
+    const [alert ,setAlert] = useState(false)
     const getDataEvolution = async ()=>{
+        if(searchValue<1 || searchValue > 468){
+            setAlert(true)
+            setTimeout(()=>{setAlert(false)},3000)
+            return
+        }
         setLoading(true)
         const idSearch = Number(searchValue)
         let queueList= []
@@ -41,6 +47,7 @@ function EvolutionItem() {
                 )
             })  
         setLoading(false)
+        setAlert(false)
     }
     return ( 
         <div className={cx('wrapper')}>
@@ -54,7 +61,13 @@ function EvolutionItem() {
                     value={searchValue}
                     placeholder="Enter ID of Pokemon"
                     onChange={e=>setSearchValue(e.target.value)}
+                    onKeyDown={e=>{
+                        if(e.key==="Enter"){
+                            getDataEvolution()
+                        }
+                    }}
                 />
+                {alert && <span className={cx("alert")}>ID must be between 1 and 468</span>}
                 { !loading ? 
                     <div onClick={getDataEvolution}>
                         <i className="fa-solid fa-magnifying-glass"></i>

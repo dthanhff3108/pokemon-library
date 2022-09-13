@@ -15,10 +15,9 @@ function ExpolerContent() {
     const [egg,setEgg]= useState([])
     const [natures,setNatures]= useState([])
     const [habitat,setHabitat]= useState([])
-    const [loading,setLoading] = useState(false)
-
+    const [showIns, setShowIns] = useState(false)
+    
     const getDataPokemon = async ()=>{
-        setLoading(true)
         const getEgg = await axios.get("https://pokeapi.co/api/v2/egg-group")
         const dataEgg  =getEgg.data.results
         setEgg(dataEgg)
@@ -29,6 +28,7 @@ function ExpolerContent() {
         const databitat = getHabitat.data.results
         setHabitat(databitat)
     }
+
     useEffect(()=>{
         getDataPokemon()
     },[])
@@ -39,13 +39,21 @@ function ExpolerContent() {
             >
                 <i className="fa-solid fa-backward"></i>
             </div>
+            {showIns && 
+                (<span className={cx("down-btn")}>
+                    <i className="fa-solid fa-arrow-down"></i> Scroll down !
+                </span>)
+            }
             <ReactPageScroller
                 animationTimer={500}
+                onBeforePageScroll={(page)=>{
+                   if(page===1){setShowIns(false)}
+                }}
             >
                 <div className={cx("expoler-list")}>
-                    <ExpolerColumn name="egg" data={egg}/>
-                    <ExpolerColumn name="natures" data={natures}/>
-                    <ExpolerColumn name="habitat" data={habitat}/>
+                    <ExpolerColumn setShowIns={setShowIns} name="egg" data={egg}/>
+                    <ExpolerColumn setShowIns={setShowIns} name="natures" data={natures}/>
+                    <ExpolerColumn setShowIns={setShowIns} name="habitat" data={habitat}/>
                 </div>         
                 <ExpolerDetail/>            
             </ReactPageScroller>

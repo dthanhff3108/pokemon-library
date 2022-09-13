@@ -20,17 +20,19 @@ function InfoBasic() {
     const typeList = checkTypePokemon(types)
     const [ searchValue, setSearchValue ] = useState("")
     const [ suggest, setSuggest ] = useState([])
+    const [ found, setFound ] = useState(false)
     const debounceSearch = useDebounce(searchValue,800)
     const [loading,setLoading] = useState(false)
     const handleSearch = async ()=>{
         setLoading(true)
         try {
+            setFound(false)
             const res =  await axios.get(`https://pokeapi.co/api/v2/pokemon/${searchValue}`)
             let data = res.data
             navigate(`/pokemon/${searchValue}`,{state:{info:{info:data}}},{ replace: false }) 
         }
         catch{
-            navigate("/not-found")
+            setFound(true)
         }    
         setLoading(false)
         setSearchValue("")
@@ -90,6 +92,11 @@ function InfoBasic() {
                 <input id="search" type="text" 
                     value={searchValue}
                     onChange={(e)=>handleChange(e)}
+                    onKeyDown={(e)=> {
+                        if(e.key==="Enter"){
+                            handleSearch()
+                        }
+                    }}
                     autoComplete="off"
                     placeholder="Let's a discovery"
                 />
@@ -107,6 +114,11 @@ function InfoBasic() {
                 <div onClick={handleSearch}>
                     { !loading ? <i className="fa-solid fa-magnifying-glass"></i> : <i className={cx("fa-solid fa-spinner","loading")}></i> }
                 </div>
+                {
+                   found && (<div className={cx("alert-float")}>
+                    Pokemon not found 
+                    </div>)
+                }
             </div>
         </div>
     );

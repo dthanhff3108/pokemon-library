@@ -21,6 +21,21 @@
       transform: scale(1.2);
    }
 }
+.down-btn{
+   position: fixed;
+   bottom: 5%;
+   left: 5%;
+   padding: 10px;
+   transition: all 0.2s linear;
+   z-index: 10;
+   color: white;
+   text-shadow: 0 0 3px #000, 2px 2px 7px #9be1ff, -2px -2px 7px #9be1ff;
+   i{
+      font-size: 24px;
+      font-size: 18px;
+      margin-right: 10px;
+   }
+}
 
 .loading{
    animation: spinner 3s linear infinite;

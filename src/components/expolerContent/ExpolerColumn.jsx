@@ -7,10 +7,11 @@ import styles from './ExpolerContent.module.scss'
 let cx = classNames.bind(styles)
 
 
-function ExpolerColumn({name,data}) {
+function ExpolerColumn({name,data,setShowIns}) {
     const dispatch = useDispatch()
     let current = useSelector(state=>state.expolerDetail.current)
     const handleShowDetail = async (src,name)=>{
+        setShowIns(false)
         dispatch(setCurrent(""))
         switch (src){
             case "egg":
@@ -28,6 +29,7 @@ function ExpolerColumn({name,data}) {
         }
         dispatch(setCurrent(name))
         dispatch(setShow(src))
+        setShowIns(true)
     }
     let styleActive = {
         transform: "translateX(8px)",

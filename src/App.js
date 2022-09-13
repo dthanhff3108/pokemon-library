@@ -48,6 +48,9 @@ function App() {
 
   return (
     <div className="App">
+        <div className='dont-support'>
+            <h1>Sorry, We don't support this device</h1>
+        </div>
         <Routes>
           <Route path ="/" element = {<Home/>}></Route>
           <Route path ="/evolution" element = {<Evolution/>}></Route>

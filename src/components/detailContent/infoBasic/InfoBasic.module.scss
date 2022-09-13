@@ -265,6 +265,14 @@
       background-color: transparent;
       
   }
+  .alert-float{
+    position: absolute;
+    top: 30%;
+    right: -50%;
+    color: white;
+    text-shadow: 0 0 3px #000, 2px 2px 7px #9be1ff, -2px -2px 7px #9be1ff;
+
+  }
   .suggest-list{
     position: absolute;
     top: 110%;
