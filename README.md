@@ -1,10 +1,8 @@
 
 
+## Pokemon - Library
 
-## State Management : Redux
-
-## FE : ReactJS
-
-## Features : See all Pokemon, See Info Pokemon by Name, Find Evolution of Pokemon by ID
-
-## api : https://pokeapi.co/
+### FE : ReactJS
+### State Management : Redux
+### Features : See all Pokemon, See Info Pokemon by Name, Find Evolution of Pokemon by ID
+### api : https://pokeapi.co/
